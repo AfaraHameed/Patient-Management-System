@@ -1,0 +1,70 @@
+/* START CONFIGURATION */
+
+html,
+body{
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+}
+
+
+
+/* FOOTER */
+
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+#footer,
+.push{
+    height: 50px;
+}
+
+/* NAVBAR */
+
+#btn-nav{
+    width:90px;
+    float: right;
+    margin-right:25px;
+}
+
+/*----SECTIONS----*/
+
+.home{background-color:green;}
+.about{background-color:red;}
+.courses{background-color:blue;}
+.contact{background-color:yellow;}
+
+/*---Navbar links----*/
+.links{
+    color:#fff;
+    padding:10px;
+    text-decoration:none;
+}
+.links:hover{
+    color:greenyellow;
+}
+
+/*------Section configuration-------*/
+.sections{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+
+}
+
+/*.active{ color:greenyellow}*/
+
+
+/*---OTHERS-----*/
+
+.no-pointer{
+    cursor:default !important
+}
+/*--------PATIENT-----*/
+
+.side-label{
+    width: 80px;
+}

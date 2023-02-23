@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<!-- block title -->
+{% block title %} Login {% endblock %}
+{% block links %}{% endblock %}
+{% block nav-btn %}
+<a href="{% url 'frontend' %}" class="btn btn-outline-secondary btn-sm text-light" id="btn-nav">Go Back</a>
+{% endblock %}
+
+
+{% block nav-content %}
+<i class="fa-solid fa-key "></i>&nbsp;&nbsp; Login
+{% endblock %}
+
+<!-- Page content -->
+
+{% block content %}
+<style>body{overflow: hidden;}</style>
+
+<br><br><br>
+<div class="container card p-3 border-dark mt-5" style="width:30%">
+
+<!-- Title -->
+<div class="text-center">RESTRICTED ACCESS</div>
+<hr>
+
+<!-- Form -->
+<form method="POST" autocomplete="off" novalidate>
+    {% csrf_token %}
+    {{ form|crispy}}
+    <br>
+    <button type="submit" class="w-100 btn btn-secondary">LOGIN</button>
+</form>
+
+</div>
+{% endblock content%}

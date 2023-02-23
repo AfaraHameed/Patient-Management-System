@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<!-- Block title -->
+{% block title %} Backend {% endblock %}
+
+<!-- Logout button -->
+
+{% block nav-btn %}
+<a class="btn btn-outline-danger btn-sm text-light" id="btn-nav" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>
+{% endblock %}
+
+
+{% block nav-content %}
+<i class="fa-solid fa-user "></i>&nbsp;&nbsp; Administration
+{% endblock %}
+
+<!-- Page Content -->
+{% block content %}
+
+<div class="mt-5">
+<center>
+  <a href="{% url 'add_patient' %}" class="btn btn-primary mt-5">Add Patient</a>
+</center>
+</div>
+{% endblock content %}
