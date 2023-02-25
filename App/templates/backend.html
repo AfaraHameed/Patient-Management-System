@@ -10,15 +10,90 @@
 
 
 {% block nav-content %}
-<i class="fa-solid fa-user "></i>&nbsp;&nbsp; Administration
+<i class="fa-solid fa-hospital"></i>&nbsp;&nbsp; Patients
 {% endblock %}
 
 <!-- Page Content -->
 {% block content %}
 
-<div class="mt-5">
-<center>
-  <a href="{% url 'add_patient' %}" class="btn btn-primary mt-5">Add Patient</a>
-</center>
+<div class="container">
+  <br><br>
+  <div class="d-flex justify-content-between">
+    <a href="{% url 'add_patient' %}" class="btn btn-primary mt-5"><i class="fas fa-plus fa-solid"></i>&nbsp;&nbsp;Add Patient</a>
+  </div>
+
+  <form>
+    <div class="input-group input-group-sm mb-3 mt-4">
+      <input type="text" name="q" class="form-control" placeholder="search for ">
+      <button class="btn btn-secondary type="submit" name="search" ><i class="fas fa-search"></i></button>
+      <a href="{% url 'backend' %}" class="btn btn-dark" style="margin-left: 2px;"><i class="fas fa-sync-alt fa-solid"></i></a>
+    </div>
+  </form>
+  <center>
+    <table class="table mt-4 table-bordered table-light">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Registered</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.phone }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.gender }}</td>
+          <td>{{ patient.created_at | date:'m/d/Y (H:i:s)'}}</td>
+        </tr>
+
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </center>
+
+
+  <!-- PAGINATION -->
+
+  <nav class="mt-4" area-label="Page navigation example">
+    {% if patients.has_other_pages %}
+    
+    <ul class="pagination justify-content-left">
+      {% if patients.has_previous %}
+      <a href="?page=1" class="btn btn-outline-primary mb-4" style="width:60px;border-radius: 1px; border: 1px solid">First</a>
+      <li class="page-item"><a class="page-link" href="?page={{patients.previous_page_number}}"><i class="fas fa-angle-double-left"></i></a></li>
+      {% else %}
+      <li class="page-item disabled"></li>
+      {% endif %}
+
+      {% for i in patients.paginator.page_range %}
+      {% if patients.number == i  %}
+      <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only"></span></span></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+
+      {% if patients.has_next %}
+      
+      <li class="page-item"><a class="page-link" href="?page={{patients.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
+      <a href="?page={{ patients.paginator.num_pages}}" class="btn btn-outline-primary mb-4" style="width:60px;border-radius: 1px; border: 1px solid; border-left: none;">Last</a>
+      {% else %}  
+      <li class="page-item disabled"></li>
+      {% endif %}
+
+    </ul>
+    {% endif %}
+  </nav>
 </div>
+
+
+
 {% endblock content %}

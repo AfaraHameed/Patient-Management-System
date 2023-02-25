@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required # Login required to ac
 from django.views.decorators.cache import cache_control # Prevent back button (destroy the last section)
 from .models import Patient
 from django.contrib import messages
+from django.db.models import Q
+from django.core.paginator import Paginator
 # Frontend
 def frontend(request):
     return render(request, "frontend.html")
@@ -12,8 +14,19 @@ def frontend(request):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def backend(request):
-    return render(request, "backend.html")
+    if 'q' in request.GET:
+        q = request.GET['q']
+        all_patient_list = Patient.objects.filter(
+            Q(name__icontains=q) | Q(email=q) | Q(phone=q) | Q(age=q) | Q(note=q)
+        ).order_by('-created_at')
+    else:
+        all_patient_list = Patient.objects.all().order_by('-created_at')
 
+    paginator = Paginator(all_patient_list , 2)
+    page  = request.GET.get('page')
+    all_patient = paginator.get_page(page)  
+
+    return render(request,'backend.html',{'patients':all_patient})                                                                                                                                                                                                                                                                                                                                                                                  
 def add_patient(request):
     if request.method == 'POST':
         if request.POST.get('name') and request.POST.get('email') and request.POST.get('phone') and request.POST.get('age') and request.POST.get('gender') or request.POST.get('note'):
