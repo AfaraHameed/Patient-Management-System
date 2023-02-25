@@ -24,7 +24,7 @@
 
   <form>
     <div class="input-group input-group-sm mb-3 mt-4">
-      <input type="text" name="q" class="form-control" placeholder="search for ">
+      <input type="text" name="q" class="form-control" placeholder="search for... " value="{{ request.GET.q }}">
       <button class="btn btn-secondary type="submit" name="search" ><i class="fas fa-search"></i></button>
       <a href="{% url 'backend' %}" class="btn btn-dark" style="margin-left: 2px;"><i class="fas fa-sync-alt fa-solid"></i></a>
     </div>
@@ -33,13 +33,13 @@
     <table class="table mt-4 table-bordered table-light">
       <thead class="thead-light">
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Email</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Registered</th>
-          <th scope="col">Action</th>
+          <th style="width: 21%;" scope="col">Name</th>
+          <th style="width: 15%;" scope="col">Phone</th>
+          <th style="width: 21%;" scope="col">Email</th>
+          <th style="width: 8%;" scope="col">Age</th>
+          <th style="width: 7%;" scope="col">Gender</th>
+          <th style="width: 18%;" scope="col">Registered</th>
+          <th style="width: 10%;" colspan="2" scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -51,6 +51,15 @@
           <td>{{ patient.age }}</td>
           <td>{{ patient.gender }}</td>
           <td>{{ patient.created_at | date:'m/d/Y (H:i:s)'}}</td>
+          <td>
+            <a class="btn btn-primary" href="#" title="Edit Patient">
+              <i class="fas fa-edit"></i> 
+            </a>
+          </td>
+            <td>
+            <a class="btn btn-secondary" href="/delete_patient/{{ patient.id }}" title="Delete Patient">
+              <i class="fas fa-trash-alt"></i>
+          </td>
         </tr>
 
         {% endfor %}
@@ -74,10 +83,15 @@
       {% endif %}
 
       {% for i in patients.paginator.page_range %}
+
       {% if patients.number == i  %}
+
       <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only"></span></span></li>
+      
       {% else %}
+      
       <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      
       {% endif %}
       {% endfor %}
 
@@ -92,6 +106,17 @@
     </ul>
     {% endif %}
   </nav>
+
+  <!-- Messages from backend -->
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    var m = "{{ message }}"
+    swal("Perfect..",m , "success")
+  </script>
+  {% endif %}
+  {% endfor %}
 </div>
 
 

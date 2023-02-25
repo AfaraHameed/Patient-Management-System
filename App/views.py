@@ -27,6 +27,8 @@ def backend(request):
     all_patient = paginator.get_page(page)  
 
     return render(request,'backend.html',{'patients':all_patient})                                                                                                                                                                                                                                                                                                                                                                                  
+
+@login_required(login_url="login")
 def add_patient(request):
     if request.method == 'POST':
         if request.POST.get('name') and request.POST.get('email') and request.POST.get('phone') and request.POST.get('age') and request.POST.get('gender') or request.POST.get('note'):
@@ -43,3 +45,11 @@ def add_patient(request):
     else:
         return render(request, 'add.html')
     
+
+@login_required(login_url="login")    
+def delete_patient(request,patient_id):
+    patient = Patient.objects.get(id=patient_id)
+    patient.delete()
+    messages.success(request, 'Patient deleted successfully!')
+    return HttpResponseRedirect('/backend')
+   
