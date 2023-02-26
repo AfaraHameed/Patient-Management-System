@@ -22,7 +22,7 @@ def backend(request):
     else:
         all_patient_list = Patient.objects.all().order_by('-created_at')
 
-    paginator = Paginator(all_patient_list , 2)
+    paginator = Paginator(all_patient_list , 5)
     page  = request.GET.get('page')
     all_patient = paginator.get_page(page)  
 

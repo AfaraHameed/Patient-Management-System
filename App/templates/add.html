@@ -27,27 +27,27 @@ Add Patient
 
                 <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text side-label">Name</span>
-                        <input type="text" class="form-control" name="name" placeholder="patient name" required {% block value-name %} {% endblock value-name %}>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="patient name" required {% block value-name %} {% endblock value-name %}>
 
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text side-label">Phone</span>
-                    <input type="text" class="form-control" name="phone" placeholder=" patient phone" required {% block value-phone %} {% endblock value-phone %}>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder=" patient phone" required {% block value-phone %} {% endblock value-phone %}>
 
                  </div>
                  <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text side-label">Email</span>
-                    <input type="email" class="form-control" name="email" placeholder=" patient email" required {% block value-email %}{% endblock value-email %}>
+                    <input type="email" class="form-control" id="email" name="email" placeholder=" patient email" required {% block value-email %}{% endblock value-email %}>
 
                  </div>
                  <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text side-label">Age</span>
-                    <input type="text" class="form-control" name="age" placeholder="age" required {% block value-age %}{% endblock value-age %}>
+                    <input type="text" class="form-control" id="age" name="age" maxlength="3" placeholder="age" required {% block value-age %}{% endblock value-age %}>
 
                  </div>
                  <div class="input-group input-group-sm mb-3">
                     <label class="input-group-text side-label">Gender</label>
-                        <select class="form-select" name="gender" required>
+                        <select class="form-select" id="age" name="gender" required>
                             {% block option %}
                             <option value="" hidden class="p-3">select the gender</option>
                             {% endblock option %}
@@ -57,11 +57,11 @@ Add Patient
                         </select>
                  </div>
                  <div class="form-group">
-                    <textarea class="form-control" type="submit" name="note" rows="7" placeholder="Description is optional.." >{% block value-note %}{% endblock value-note %}</textarea>
+                    <textarea class="form-control" type="submit" id="note" name="note" rows="7" placeholder="Description is optional.." >{% block value-note %}{% endblock value-note %}</textarea>
                  </div>
                  {% block Id_hidden %}{% endblock %}
                 <div class="d-grid gap-2 mt-3">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" id="btn-add" class="btn btn-primary btn-sm">
                     {% block btn-content %}    <i class="fas fa-plus"></i>&nbsp;&nbsp;Add {% endblock %}
                     </button>
                     {% block btn-reset %}{% endblock %}
