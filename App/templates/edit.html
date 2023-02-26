@@ -1,0 +1,33 @@
+{% extends 'add.html' %}
+{% block title %}
+Patient
+{% endblock %}
+{% block nav-content %}
+<i class="fa-solid fa-user-edit"></i>&nbsp;&nbsp; {{patient.name}}
+{% endblock %}
+{% block card-title %}
+ <span style="color: black;">Registered at : </span>{{patient.created_at}}
+{% endblock %}
+
+{% block action %}
+action="/edit_patient"
+{% endblock %}
+
+{% block Id_hidden %}<input type="hidden" name="id" value="{{patient.id}}"> {% endblock %}
+{% block value-name %} value="{{ patient.name }}" {% endblock value-name %}
+{% block value-phone %} value="{{ patient.phone }}" {% endblock value-phone %}
+{% block value-email %} value="{{ patient.email }}" {% endblock value-email %}
+{% block value-age %} value="{{ patient.age }}" {% endblock value-age %}
+{% block option %}<option style="background-color: #d3d3d3;color: blueviolet;">{{ patient.gender }} {% endblock option %}
+
+{% block value-gender %} value="{{ patient.gender}}" {% endblock value-gender %}
+{% block value-note %} {{ patient.note}} {% endblock value-note %}
+
+
+
+{% block btn-content %}    
+<i class="fas fa-hdd"></i>&nbsp;&nbsp;Save 
+{% endblock %}
+{% block btn-reset %}
+<button type="reset" class="btn btn-dark btn-sm"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Reset</button>
+{% endblock %}

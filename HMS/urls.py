@@ -29,5 +29,11 @@ urlpatterns = [
     #add_patient
     path('add_patient',views.add_patient,name='add_patient'),
     #path to delete patient
-    path('delete_patient/<str:patient_id>',views.delete_patient,name='delete_patient')
+    path('delete_patient/<str:patient_id>',views.delete_patient,name='delete_patient'),
+    #path to access patients individualy
+    path('patient/<str:patient_id>',views.patient,name='patient'),
+    #path to access edit patient
+    path('edit_patient',views.edit_patient,name='edit_patient'),
+
+    
 ]
