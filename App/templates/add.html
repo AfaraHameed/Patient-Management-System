@@ -27,7 +27,7 @@ Add Patient
 
                 <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text side-label">Name</span>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="patient name" required {% block value-name %} {% endblock value-name %}>
+                        <input type="text" class="form-control" id="name" name="name" maxlength="40" placeholder="patient name" required {% block value-name %} {% endblock value-name %}>
 
                 </div>
                 <div class="input-group input-group-sm mb-3">
@@ -37,7 +37,7 @@ Add Patient
                  </div>
                  <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text side-label">Email</span>
-                    <input type="email" class="form-control" id="email" name="email" placeholder=" patient email" required {% block value-email %}{% endblock value-email %}>
+                    <input type="email" class="form-control" id="email" maxlength="40" name="email" placeholder=" patient email" required {% block value-email %}{% endblock value-email %}>
 
                  </div>
                  <div class="input-group input-group-sm mb-3">
@@ -57,7 +57,7 @@ Add Patient
                         </select>
                  </div>
                  <div class="form-group">
-                    <textarea class="form-control" type="submit" id="note" name="note" rows="7" placeholder="Description is optional.." >{% block value-note %}{% endblock value-note %}</textarea>
+                    <textarea class="form-control" type="submit" id="note" name="note" rows="7" placeholder="Description is optional.." maxlength="300">{% block value-note %}{% endblock value-note %}</textarea>
                  </div>
                  {% block Id_hidden %}{% endblock %}
                 <div class="d-grid gap-2 mt-3">

@@ -31,6 +31,12 @@ function validAll() {
   if (name == "") {
     swal("oops!!!", "name field can't be empty");
     return false;
+  } else if (name.split(' ').length<2 ){
+    swal("oops!!!", "last name is required");
+    return false;
+  } else if (name==name.toUpperCase()){
+    swal("oops!!!", "name field can not be uppercase","info");
+    return false;
   } else if (phone == "") {
     swal("oops!!!", "phone field can't be empty");
     return false;
@@ -99,3 +105,25 @@ $(document).ready(function () {
     },
   });
 });
+
+
+// Prevent starting age field with 0
+
+$("#age").on("input",function(){
+  if(/^0/.test(this.value)){
+    this.value= this.value.replace(/^0/, "")
+  }
+})
+
+//prevent user registering full name if more than two name
+
+$(document).ready(function(){
+   $("#name").keyup(function(){
+    var name=$("#name").val()
+    if(name.split(' ').length==3){
+      swal("Ooops!! put only first and last name", "info");
+      $("#name").val("")
+      return false;
+    }
+})
+})
