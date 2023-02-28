@@ -1,0 +1,23 @@
+{% extends 'components/modals/base_modal.html' %}
+
+<!-- Model Id -->
+{% block modal-id %}id="deletemodal{{ patient.pk }}"{% endblock %}
+
+<!-- Model Title -->
+{% block modal-title %}
+<i class="fas fa-trash-alt">&nbsp; Remove patient</i>
+{% endblock %}
+
+<!-- Model Body -->
+{% block modal-body %}
+<br>
+<div class="text-danger text-center"><i class="fa fa-times fa-3x"></i></div>
+<div class="text-danger text-center mb-3 mt-4">ARE YOU SURE TO REMOVE??</div>
+<div class="text-dark mt-3 mb-2">Patient:<strong>{{ patient.name }}</strong></div>
+
+{% endblock %}
+
+<!-- Model Footer -->
+{% block modal-footer %}
+<a href="/delete_patient/{{ patient.id }}" class="btn btn-outline-danger btn-sm">DELETE</a>
+{% endblock %}

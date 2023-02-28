@@ -9,6 +9,7 @@
 {% endblock %}
 
 
+
 {% block nav-content %}
 <i class="fa-solid fa-hospital"></i>&nbsp;&nbsp; Patients
 {% endblock %}
@@ -44,6 +45,7 @@
       </thead>
       <tbody>
         {% for patient in patients %}
+        
         <tr>
           <td>{{ patient.name }}</td>
           <td>{{ patient.phone }}</td>
@@ -57,11 +59,13 @@
             </a>
           </td>
             <td>
-            <a class="btn btn-secondary" href="/delete_patient/{{ patient.id }}" title="Delete Patient">
+              <a class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#deletemodal{{ patient.pk }}" title="Delete Patient">
+            <!-- <a class="btn btn-secondary" href="/delete_patient/{{ patient.id }}" title="Delete Patient"> -->
               <i class="fas fa-trash-alt"></i>
-          </td>
+          </td></a>{% include 'components/modals/delete_Patient.html' %}
+          
         </tr>
-
+        
         {% endfor %}
         
       </tbody>
