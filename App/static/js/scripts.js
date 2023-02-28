@@ -127,3 +127,20 @@ $(document).ready(function(){
     }
 })
 })
+
+// Time running at realtime
+setInterval(function(){
+  var date=new Date();
+  $("#clock").html(
+    date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+    )
+},500)
+
+//If no patient when searching show a message
+
+var verify = $('#chk_td').length;
+if(verify==0){
+  $('#no_patient').text("No patient found");
+  }
+
+  

@@ -8,6 +8,15 @@ Add Patient
 <i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp; Add Patient
 {% endblock %}
 
+<!-- Time -->
+{% block time %}
+<div class="col-sm">
+  <center>
+    <span style="color: rgb(26, 188, 169);" id="clock" ></span>
+  </center>
+</div>
+{% endblock time %}
+
 {% block nav-btn %}
 <a class="btn btn-outline-danger btn-sm text-light" id="btn-nav" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>
 {% endblock %}

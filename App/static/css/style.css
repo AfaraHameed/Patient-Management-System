@@ -1,4 +1,4 @@
-/* START CONFIGURATION */
+/* ----------START CONFIGURATION -------*/
 
 html,
 body{
@@ -9,7 +9,7 @@ body{
 
 
 
-/* FOOTER */
+/* -----------FOOTER -----------------*/
 
 .wrapper{
     min-height: 100%;
@@ -67,4 +67,61 @@ body{
 
 .side-label{
     width: 80px;
+}
+
+/* BACKEND----PATIENT LIST(backend.html) */
+
+#no_patient{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+}
+
+/* -----------LOGIN--------------- */
+#heart{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+}
+
+/*-------- COSTOME SWEETALERT--------- */
+.swal-text{
+    text-align: center;
+}
+
+/* Icon settings */
+.swal-icon--success:before,
+.swal-icon--success:after,
+.swal-icon--success__hide-corners:{
+        background: none;
+}
+.swal-icon--success__s{
+    background-color: dodgerblue;
+}
+.swal-icon--success__line{
+    background-color: cornflowerblue;
+}
+
+/* Button settings */
+.swal-button{
+    padding: 7px 18px;
+    border-radius: 5px;
+    background-color: #3f44c5;
+    font-size: 12px;
+    border: 1px solid #3f44c5;
+}
+.swal-button:focus{
+    box-shadow: none;
+}
+
+.swal-button:not([disabled]):hover{
+    background:transparent;
+    color: black;
+    border: 1px solid #3f44c5;
 }

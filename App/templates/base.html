@@ -32,13 +32,8 @@
                         {% endblock %}
                     </a>
                 </div>
-<!--                Section middle-->
-                <!-- <div>
-                    <a class="links" href="#home">HOME</a>
-                    <a class="links" href="#about">ABOUT</a>
-                    <a class="links" href="#courses">COURSES</a>
-                    <a class="links" href="#contact">CONTACT</a>
-                </div> -->
+                <!-- Time -->
+                    {% block time %}{% endblock time%}
                     <!-- Button (Right side) -->
                 <div class="col-sm">
                     {% block nav-btn %}
@@ -78,6 +73,11 @@
 
     <!-- Static JS -->
     <script src={% static "js/scripts.js" %}></script>
-    
+   <!-- Pulse effect blinking -->
+   <script>
+        (function blink(){
+            $('.blink_me').fadeOut(1000).fadeIn(1000,blink)
+        })()
+    </script>
 </body>
 </html>

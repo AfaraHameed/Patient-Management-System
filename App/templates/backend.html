@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 <!-- Block title -->
-{% block title %} Backend {% endblock %}
+{% block title %} All patients {% endblock %}
 
 <!-- Logout button -->
 
@@ -9,10 +9,19 @@
 {% endblock %}
 
 
-
+<!-- Navbar content -->
 {% block nav-content %}
 <i class="fa-solid fa-hospital"></i>&nbsp;&nbsp; Patients
 {% endblock %}
+
+<!-- Time -->
+{% block time %}
+<div class="col-sm">
+  <center>
+    <span style="color: rgb(26, 188, 169);" id="clock" ></span>
+  </center>
+</div>
+{% endblock time %}
 
 <!-- Page Content -->
 {% block content %}
@@ -21,7 +30,11 @@
   <br><br>
   <div class="d-flex justify-content-between">
     <a href="{% url 'add_patient' %}" class="btn btn-primary mt-5"><i class="fas fa-plus fa-solid"></i>&nbsp;&nbsp;Add Patient</a>
+    <span class="mt-5">
+      Welcome:<strong><span class="text-primary">{{user.get_username}}</span></strong>
+    </span>
   </div>
+ 
 
   <form>
     <div class="input-group input-group-sm mb-3 mt-4">
@@ -46,7 +59,7 @@
       <tbody>
         {% for patient in patients %}
         
-        <tr>
+        <tr id="chk_td">
           <td>{{ patient.name }}</td>
           <td>{{ patient.phone }}</td>
           <td>{{ patient.email }}</td>
@@ -120,10 +133,12 @@
     var m = "{{ message }}"
     swal("Perfect..",m , "success")
   </script>
+
   {% endif %}
   {% endfor %}
+<!-- If no patient show the message -->
+<span id="no_patient" class="text-danger font-weight-bold" ></span>
+
 </div>
-
-
 
 {% endblock content %}

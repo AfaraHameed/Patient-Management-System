@@ -5,6 +5,15 @@ Patient
 {% block nav-content %}
 <i class="fa-solid fa-user-edit"></i>&nbsp;&nbsp; {{patient.name}}
 {% endblock %}
+<!-- Time -->
+{% block time %}
+<div class="col-sm">
+  <center>
+    <span style="color: rgb(26, 188, 169);" id="clock" ></span>
+  </center>
+</div>
+{% endblock time %}
+
 {% block card-title %}
  <span style="color: black;">Registered at : </span>{{patient.created_at}}
 {% endblock %}
